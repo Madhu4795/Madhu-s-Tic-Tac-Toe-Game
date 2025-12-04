@@ -1,0 +1,38 @@
+import confetti from 'canvas-confetti';
+
+export const triggerWinConfetti = () => {
+  // Fire a celebratory burst of confetti from two angles
+  const duration = 2500;
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
+
+  const randomInRange = (min: number, max: number) => {
+    return Math.random() * (max - min) + min;
+  }
+
+  const interval: any = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    const particleCount = 50 * (timeLeft / duration);
+    
+    // Confetti from the left
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      colors: ['#818cf8', '#f43f5e', '#fbbf24', '#34d399', '#a78bfa'] // Matching app theme colors
+    });
+
+    // Confetti from the right
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      colors: ['#818cf8', '#f43f5e', '#fbbf24', '#34d399', '#a78bfa']
+    });
+  }, 250);
+};

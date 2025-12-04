@@ -1,0 +1,5 @@
+{
+  "name": "Madhu's Tic-Tac-Toe",
+  "description": "A smart Tic-Tac-Toe game where you play against Google's Gemini AI. Features a sleek UI, real-time AI reasoning display, and responsive design.",
+  "requestFramePermissions": []
+}
